@@ -64,7 +64,7 @@ class Renderer: NSObject {
 
         self.sampler = Renderer.buildSamplerState(withDevice: device, addressMode: .clampToEdge, filter: .linear)
 
-        self.quad = Quad(sideLength: 64, device: device)
+        self.quad = Quad(sideLength: 32, device: device)
 
         super.init()
 

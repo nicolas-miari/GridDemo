@@ -15,8 +15,10 @@ struct Constants {
 };
 
 struct VertexIn {
-    packed_float4 position [[ attribute(0) ]];
-    packed_float2 texCoords [[ attribute(1) ]];
+    //packed_float4 position [[ attribute(0) ]];
+    //packed_float2 texCoords [[ attribute(1) ]];
+    float4 position [[ attribute(0) ]];
+    float2 texCoords [[ attribute(1) ]];
 };
 
 struct VertexOut {
@@ -34,11 +36,7 @@ vertex VertexOut sprite_vertex_transform(device VertexIn *vertices [[buffer(0)]]
 
     VertexOut out;
 
-    // Multiplying the model position by the model-view-projection matrix moves
-    // us into clip space:
     out.position = uniforms.modelViewProjectionMatrix * modelPosition;
-
-    // Copy the vertex texture coordinates:
     out.texCoords = vertices[vertexId].texCoords;
 
     return out;
@@ -51,11 +49,9 @@ fragment half4 sprite_fragment_textured(
         texture2d<float, access::sample> tex2d [[texture(0)]],
         sampler sampler2d [[sampler(0)]]){
 
-    // Sample the texture to get the surface color at this point
     half4 surfaceColor = half4(tex2d.sample(sampler2d, fragmentIn.texCoords).rgba);
 
-    // Modulate by tint color:
-    return surfaceColor; //* half4(uniforms.tintColor);
+    return surfaceColor;
 }
 
 /*
