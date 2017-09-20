@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA145D381F72037C00864C29 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA145D371F72037C00864C29 /* Grid.swift */; };
 		FAB407671F71FAD100B6063E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB407661F71FAD100B6063E /* AppDelegate.swift */; };
 		FAB407691F71FAD100B6063E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB407681F71FAD100B6063E /* GameViewController.swift */; };
 		FAB4076B1F71FAD100B6063E /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = FAB4076A1F71FAD100B6063E /* Shaders.metal */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA145D371F72037C00864C29 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		FAB407631F71FAD100B6063E /* GridDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB407661F71FAD100B6063E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAB407681F71FAD100B6063E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				FAB407681F71FAD100B6063E /* GameViewController.swift */,
 				FAB407791F71FCF800B6063E /* ViewController.swift */,
 				FAB407771F71FB2000B6063E /* Renderer.swift */,
+				FA145D371F72037C00864C29 /* Grid.swift */,
 				FAB4076A1F71FAD100B6063E /* Shaders.metal */,
 				FAB4076C1F71FAD100B6063E /* Assets.xcassets */,
 				FAB4076E1F71FAD100B6063E /* MainMenu.xib */,
@@ -147,6 +150,7 @@
 				FAB4076B1F71FAD100B6063E /* Shaders.metal in Sources */,
 				FAB407691F71FAD100B6063E /* GameViewController.swift in Sources */,
 				FAB407671F71FAD100B6063E /* AppDelegate.swift in Sources */,
+				FA145D381F72037C00864C29 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +311,7 @@
 				FAB407761F71FAD100B6063E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

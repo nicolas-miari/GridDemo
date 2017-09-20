@@ -7,12 +7,23 @@
 //
 
 import Metal
+import simd
 import MetalKit
+
+struct Constants {
+    var modelViewProjectionMatrix = matrix_identity_float4x4
+    var tintColor = float4(1, 1, 1, 1)
+    //var normalMatrix = matrix_identity_float3x3
+}
 
 @objc
 class Renderer: NSObject {
 
     weak var view: MTKView!
+
+    var constants = Constants()
+    
+    let quad: Quad
 
     let device: MTLDevice
     let commandQueue: MTLCommandQueue
@@ -25,7 +36,7 @@ class Renderer: NSObject {
         self.view = view
 
         self.view.sampleCount = 4
-        self.view.clearColor = MTLClearColorMake(1, 0, 1, 1)
+        self.view.clearColor = MTLClearColorMake(1, 1, 1, 1)
         self.view.colorPixelFormat = .bgra8Unorm
         self.view.depthStencilPixelFormat = .depth32Float
 
@@ -52,6 +63,8 @@ class Renderer: NSObject {
         self.depthStencilState = Renderer.buildDepthStencilState(withDevice: device, compareFunction: .less, isWriteEnabled: true)
 
         self.sampler = Renderer.buildSamplerState(withDevice: device, addressMode: .clampToEdge, filter: .linear)
+
+        self.quad = Quad(sideLength: 64, device: device)
 
         super.init()
 
@@ -137,6 +150,18 @@ class Renderer: NSObject {
         renderEncoder.setCullMode(.none)
         renderEncoder.setDepthStencilState(depthStencilState)
         renderEncoder.setRenderPipelineState(renderPipelineState)
+
+        renderEncoder.setVertexBuffer(quad.vertexBuffer, offset: 0, at: 0)
+        renderEncoder.setVertexBytes(&constants, length: MemoryLayout<Constants>.stride, at: 1)
+        renderEncoder.setFragmentTexture(texture, at: 0)
+        renderEncoder.setFragmentSamplerState(sampler, at: 0)
+
+        renderEncoder.drawIndexedPrimitives(
+            type: quad.primitiveType,
+            indexCount: quad.indexCount,
+            indexType: quad.indexType,
+            indexBuffer: quad.indexBuffer,
+            indexBufferOffset: 0)
 
         renderEncoder.popDebugGroup()
         renderEncoder.endEncoding()
