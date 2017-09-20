@@ -12,6 +12,8 @@
 		FAB4076B1F71FAD100B6063E /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = FAB4076A1F71FAD100B6063E /* Shaders.metal */; };
 		FAB4076D1F71FAD100B6063E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB4076C1F71FAD100B6063E /* Assets.xcassets */; };
 		FAB407701F71FAD100B6063E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB4076E1F71FAD100B6063E /* MainMenu.xib */; };
+		FAB407781F71FB2000B6063E /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB407771F71FB2000B6063E /* Renderer.swift */; };
+		FAB4077A1F71FCF800B6063E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB407791F71FCF800B6063E /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		FAB4076C1F71FAD100B6063E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAB4076F1F71FAD100B6063E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FAB407711F71FAD100B6063E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAB407771F71FB2000B6063E /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		FAB407791F71FCF800B6063E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				FAB407661F71FAD100B6063E /* AppDelegate.swift */,
 				FAB407681F71FAD100B6063E /* GameViewController.swift */,
+				FAB407791F71FCF800B6063E /* ViewController.swift */,
+				FAB407771F71FB2000B6063E /* Renderer.swift */,
 				FAB4076A1F71FAD100B6063E /* Shaders.metal */,
 				FAB4076C1F71FAD100B6063E /* Assets.xcassets */,
 				FAB4076E1F71FAD100B6063E /* MainMenu.xib */,
@@ -136,6 +142,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB4077A1F71FCF800B6063E /* ViewController.swift in Sources */,
+				FAB407781F71FB2000B6063E /* Renderer.swift in Sources */,
 				FAB4076B1F71FAD100B6063E /* Shaders.metal in Sources */,
 				FAB407691F71FAD100B6063E /* GameViewController.swift in Sources */,
 				FAB407671F71FAD100B6063E /* AppDelegate.swift in Sources */,
@@ -252,12 +260,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = D2D4S4F85R;
 				INFOPLIST_FILE = GridDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicolasmiari.GridDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -266,12 +276,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = D2D4S4F85R;
 				INFOPLIST_FILE = GridDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicolasmiari.GridDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

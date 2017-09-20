@@ -7,6 +7,59 @@
 //
 
 #include <metal_stdlib>
+using namespace metal;
+
+struct Constants {
+    float4x4 modelViewProjectionMatrix;
+    float4 tintColor;
+};
+
+struct VertexIn {
+    packed_float4 position [[ attribute(0) ]];
+    packed_float2 texCoords [[ attribute(1) ]];
+};
+
+struct VertexOut {
+    float4 position [[position]];
+    float2 texCoords;
+};
+
+/// Vertex Shader for Sprites
+///
+vertex VertexOut sprite_vertex_transform(device VertexIn *vertices [[buffer(0)]],
+                                         constant Constants &uniforms [[buffer(1)]],
+                                         uint vertexId [[vertex_id]]) {
+
+    float4 modelPosition = vertices[vertexId].position;
+
+    VertexOut out;
+
+    // Multiplying the model position by the model-view-projection matrix moves
+    // us into clip space:
+    out.position = uniforms.modelViewProjectionMatrix * modelPosition;
+
+    // Copy the vertex texture coordinates:
+    out.texCoords = vertices[vertexId].texCoords;
+
+    return out;
+}
+
+/// Fragment Shader for Sprites
+///
+fragment half4 sprite_fragment_textured(
+        VertexOut fragmentIn [[stage_in]],
+        texture2d<float, access::sample> tex2d [[texture(0)]],
+        sampler sampler2d [[sampler(0)]]){
+
+    // Sample the texture to get the surface color at this point
+    half4 surfaceColor = half4(tex2d.sample(sampler2d, fragmentIn.texCoords).rgba);
+
+    // Modulate by tint color:
+    return surfaceColor; //* half4(uniforms.tintColor);
+}
+
+/*
+#include <metal_stdlib>
 
 using namespace metal;
 
@@ -31,4 +84,4 @@ vertex VertexInOut passThroughVertex(uint vid [[ vertex_id ]],
 fragment half4 passThroughFragment(VertexInOut inFrag [[stage_in]])
 {
     return half4(inFrag.color);
-};
+};*/
